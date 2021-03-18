@@ -424,6 +424,10 @@
         margin-right: 0;
     }
 
+    .events__block-image {
+        margin-bottom: 5px;
+    }
+
     .events__block-date {
         margin-right: 10px;
     }
@@ -434,6 +438,10 @@
 
     .events__block-heading {
         margin-bottom: 36px;
+    }
+
+    .events__block-description {
+        padding-right: 5px;
     }
 
     .events__block-link {

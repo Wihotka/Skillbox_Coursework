@@ -150,6 +150,9 @@
 
 .projects__item-image {
     max-width: 100%;
+        -webkit-transform: scale(1.15);
+        -ms-transform: scale(1.15);
+    transform: scale(1.15);
         -webkit-filter: grayscale(1) contrast(0) opacity(0.5);
     filter: grayscale(1) contrast(0) opacity(0.5);
         -webkit-transition: -webkit-filter 300ms ease-in-out;
@@ -237,6 +240,14 @@
 .projects-swiper-button-prev:active::after,
 .projects-swiper-button-next:active::after {
     color: #ffffff;
+}
+
+@media (max-width: 1500px) {
+    .projects__item-image {
+            -webkit-transform: scale(1);
+            -ms-transform: scale(1);
+        transform: scale(1);
+    }
 }
 
 @media (max-width: 1024px) {

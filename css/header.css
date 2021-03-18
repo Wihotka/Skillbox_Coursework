@@ -1050,7 +1050,7 @@
 
     .header-menu {
         height: 45px;
-        padding: 10px 0 10px 0;
+        padding: 5px 0 15px 0;
     }
 
     .header-menu__nav-menu {
@@ -1103,12 +1103,14 @@
         z-index: 3;
         width: 97px;
         height: auto;
+        padding-left: 5px;
             -webkit-transform: scale(1);
             -ms-transform: scale(1);
         transform: scale(1);
     }
 
     .header-menu__search-content {
+        justify-content: flex-end;
         z-index: 3;
         background-color: inherit;
     }
@@ -1132,9 +1134,9 @@
     }
 
     .header-menu__search-icon {
-            -webkit-transform: scale(0.75);
-            -ms-transform: scale(0.75);
-        transform: scale(0.75);
+            -webkit-transform: scale(0.75) translateX(3px);
+            -ms-transform: scale(0.75) translateX(3px);
+        transform: scale(0.75) translateX(3px);
     }
 
     .header-menu__search-input {

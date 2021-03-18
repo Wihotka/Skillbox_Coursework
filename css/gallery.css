@@ -151,6 +151,7 @@
     position: relative;
     order: 2;
     width: calc(75% - 50px);
+    height: auto;
     max-height: 844px;
     padding-top: 85px;
     padding-bottom: 8px;
@@ -316,10 +317,12 @@
     display: block;
     width: 20px;
     height: 20px;
+    border: none;
     font-weight: normal;
     font-size: 20px;
     float: none;
     text-align: center;
+    background-color: inherit;
     text-shadow: none;
 }
 
@@ -408,6 +411,8 @@
 
     .gallery-second {
         width: calc(70% - 50px);
+        padding-top: 83px;
+        padding-bottom: 10px;
     }
 
     .gallery-second__slide {
@@ -557,6 +562,10 @@
         max-width: -webkit-fit-content;
         max-width: -moz-fit-content;
         max-width: fit-content;
+    }
+
+    .modal__header {
+        padding: 5px;
     }
 
     .modal__body {

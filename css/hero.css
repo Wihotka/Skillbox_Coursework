@@ -143,21 +143,21 @@
     }
 
     .hero-heading {
-        max-width: 320px;
-        padding-right: 30px;
-        padding-left: 30px;
+        min-width: 0;
+        max-width: 260px;
+        padding-right: 0;
         font-size: 32px;
         line-height: 38px;
         text-align: center;
     }
 
     .hero-description {
-        max-width: 320px;
+        min-width: 0;
+        max-width: 264px;
         margin-right: auto;
         margin-bottom: 41px;
         margin-left: auto;
-        padding-right: 30px;
-        padding-left: 30px;
+        padding-right: 0;
         font-size: 12px;
         font-weight: normal;
         line-height: 16px;

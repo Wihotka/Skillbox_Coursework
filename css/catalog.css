@@ -486,6 +486,13 @@
         height: 30px;
     }
 
+    .catalog-second__item-closed::after {
+        top: calc(50% - 7px);
+        left: calc(50% - 4px);
+        width: 7px;
+        height: 7px;
+    }
+
     .catalog-second__list {
         max-height: 384px;
         padding-right: 0;

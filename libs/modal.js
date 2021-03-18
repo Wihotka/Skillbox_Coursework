@@ -21,7 +21,7 @@ $modal = function (options) {
     function _createModal(options) {
         var
             elemModal = document.createElement('div'),
-            modalTemplate = '<div class="modal__backdrop" data-dismiss="modal"><div class="modal__content"><div class="modal__header"><div class="modal__title" data-modal="title">{{title}}</div><span class="modal__btn-close" data-dismiss="modal" title="Закрыть">×</span></div><div class="modal__body" data-modal="content">{{content}}</div>{{footer}}</div></div>',
+            modalTemplate = '<div class="modal__backdrop" data-dismiss="modal"><div class="modal__content"><div class="modal__header"><div class="modal__title" data-modal="title">{{title}}</div><button class="modal__btn-close" data-dismiss="modal" title="Закрыть">×</button></div><div class="modal__body" data-modal="content">{{content}}</div>{{footer}}</div></div>',
             modalFooterTemplate = '<div class="modal__footer">{{buttons}}</div>',
             modalButtonTemplate = '<button type="button" class="{{button_class}}" data-handler={{button_handler}}>{{button_text}}</button>',
             modalHTML,
@@ -45,22 +45,72 @@ $modal = function (options) {
         return elemModal;
     }
 
+    function _focusTrap() {
+        const  focusableElement = document.querySelector('.modal__btn-close');
+
+        document.addEventListener('keydown', function(e) {
+            let isTabPressed = e.key === 'Tab' || e.keyCode === 9;
+
+            if (_elemModal.classList.contains('modal__show')) {
+                if (!isTabPressed) {
+                    return;
+                }
+    
+                if (isTabPressed) {
+                    focusableElement.focus();
+                }
+    
+                if (e.shiftKey) {
+                    if (document.activeElement === focusableElement) {
+                        focusableElement.focus();
+                        e.preventDefault();
+                    }
+                } else {
+                    if (document.activeElement === focusableElement) { 
+                        focusableElement.focus();
+                        e.preventDefault();
+                    }
+                }
+            } else {
+                if (!isTabPressed) {
+                    return;
+                }
+    
+                if (e.shiftKey) {
+                    if (document.activeElement === focusableElement) {
+                        return;
+                    }
+                } else {
+                    if (document.activeElement === focusableElement) { 
+                        return;
+                    }
+                }
+            }
+        });
+    }
+
     function _showModal() {
         if (!_destroyed && !_hiding) {
             _elemModal.classList.add('modal__show');
             document.dispatchEvent(_eventShowModal);
+            document.querySelector('body').classList.add('modal-open');
+
+            _focusTrap();
         }
     }
 
     function _hideModal() {
         _hiding = true;
         _elemModal.classList.remove('modal__show');
+        document.querySelector('body').classList.remove('modal-open');
         _elemModal.classList.add('modal__hiding');
         setTimeout(function () {
             _elemModal.classList.remove('modal__hiding');
             _hiding = false;
         }, _animationSpeed);
         document.dispatchEvent(_eventHideModal);
+
+        _focusTrap();
     }
 
     function _handlerCloseModal(e) {

@@ -141,51 +141,60 @@ window.addEventListener('DOMContentLoaded', function() {
     });
 
     // Swiper Gallery slider parameters
-    var gallerySwiper = new Swiper('.gallery-swiper', {
-        // Optional parameters
-        slidesPerColumn: 1,
-        slidesPerColumnFill: 'row',
-        slidesPerGroup: 1,
-        slidesPerView: 1,
-        spaceBetween: 0,
+    var gallerySwiper;
 
-        // Responsive breakpoints
-        breakpoints: {
-            1301: {
-                slidesPerColumn: 2,
-                slidesPerGroup: 3,
-                slidesPerView: 3,
-                spaceBetween: 50,
+    function gallerySlider() {
+        gallerySwiper = new Swiper('.gallery-swiper', {
+            // Optional parameters
+            slidesPerGroup: 1,
+            slidesPerView: 1,
+            slidesPerColumn: 1,
+            slidesPerColumnFill: 'row',
+            spaceBetween: 34,
+    
+            // Responsive breakpoints
+            breakpoints: {
+                1301: {
+                    slidesPerGroup: 3,
+                    slidesPerView: 3,
+                    slidesPerColumn: 2,
+                    slidesPerColumnFill: 'row',
+                    spaceBetween: 50,
+                },
+
+                1025: {
+                    slidesPerGroup: 3,
+                    slidesPerView: 3,
+                    slidesPerColumn: 2,
+                    slidesPerColumnFill: 'row',
+                    spaceBetween: 34,
+                },
+
+                701: {
+                    slidesPerGroup: 2,
+                    slidesPerView: 2,
+                    slidesPerColumn: 2,
+                    slidesPerColumnFill: 'row',
+                    spaceBetween: 34,
+                },
             },
-
-            1025: {
-                slidesPerColumn: 2,
-                slidesPerGroup: 3,
-                slidesPerView: 3,
-                spaceBetween: 34,
+    
+            // If we need pagination
+            pagination: {
+                el: '.gallery-pagination',
+                type: 'fraction',
+                clickable: true,
             },
-
-            701: {
-                slidesPerColumn: 2,
-                slidesPerGroup: 2,
-                slidesPerView: 2,
-                spaceBetween: 34,
+    
+            // Navigation arrows
+            navigation: {
+                nextEl: '.gallery-swiper-button-next',
+                prevEl: '.gallery-swiper-button-prev',
             },
-        },
+        });
+    };
 
-        // If we need pagination
-        pagination: {
-            el: '.gallery-pagination',
-            type: 'fraction',
-            clickable: true,
-        },
-
-        // Navigation arrows
-        navigation: {
-            nextEl: '.gallery-swiper-button-next',
-            prevEl: '.gallery-swiper-button-prev',
-        },
-    });
+    gallerySlider();
 
     // Gallery modal window
     var modal = $modal({
@@ -636,6 +645,8 @@ window.addEventListener('DOMContentLoaded', function() {
     window.addEventListener('resize', () => {
         headerSearchSmartphone();
         catalogScroll();
+        gallerySwiper.destroy();
+        gallerySlider();
         mobileEventsSwiper();
         eventsSlideMiddle();
         mobileEditionsSwiper();

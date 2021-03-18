@@ -112,11 +112,14 @@
 
 @media (max-width: 700px) {
     .footer {
-        padding-top: 8px;
-        padding-bottom: 7px;
+        padding-top: 10px;
+        padding-bottom: 5px;
     }   
 
     .footer__logo {
+            -webkit-box-pack: end;
+            -ms-flex-pack: end;
+        justify-content: flex-end;
         width: 96.8px;
         height: auto;
     }
